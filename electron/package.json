@@ -1,0 +1,36 @@
+{
+	"name": "develop-desktop",
+	"version": "1.0.0",
+	"description": "My Electron application description",
+	"main": "src/index.js",
+	"scripts": {
+		"start": "NODE_ENV=dev electron .",
+		"build-win": "electron-builder --windows --ia32",
+		"build-mac": "electron-builder --mac",
+		"publish": "electron-builder publish",
+		"lint": "echo \"No linting configured\""
+	},
+	"keywords": [],
+	"author": {
+		"name": "lemo",
+		"email": "lemo@gamstudio.net"
+	},
+	"license": "MIT",
+	"build": {
+		"asar": false,
+		"win": {
+			"icon": "src/develop.ico"
+		},
+		"mac": {
+			"icon": "src/develop.icns"
+		}
+	},
+	"dependencies": {
+		"electron-squirrel-startup": "^1.0.0",
+		"lows": "^1.1.3"
+	},
+	"devDependencies": {
+		"electron": "9.0.0",
+		"electron-builder": "^22.6.1"
+	}
+}

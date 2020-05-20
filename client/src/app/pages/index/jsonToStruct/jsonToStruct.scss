@@ -1,0 +1,59 @@
+.jsonToStruct {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+
+    > .left {
+        //height: 100%;
+        //transform: unset;
+        ////position: relative !important;
+        ////padding: 5px 0 5px 5px;
+        //margin-right: 5px;
+        //position: unset !important;
+        //
+        //>.inputJson {
+        //
+        //    width: 100%;
+        //    height: 100%;
+        //}
+        width: 40%;
+        height: 100%;
+    }
+
+    > .right {
+        width: 59.5%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        > .monacoEditor {
+            height: calc(100% - 50px);
+            width: 100%;
+        }
+
+        > .option {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            > .select {
+                width: 150px;
+                margin: 0 5px;
+            }
+
+            > .name {
+                width: 150px;
+                margin: 0 5px;
+            }
+        }
+    }
+
+}

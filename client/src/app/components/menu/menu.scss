@@ -1,0 +1,33 @@
+.menu {
+    width: 400px;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+
+    > .groupWord {
+        font-size: 14px;
+        width: 100%;
+        padding: 10px;
+    }
+
+    > .menuGroup {
+
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        > .menuList {
+            width: 30%;
+            margin: 5px calc(10% / 6);
+        }
+    }
+
+    > .groupDivider {
+        width: calc(100% - 20px);
+        margin: 5px 10px;
+    }
+}
