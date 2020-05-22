@@ -1,10 +1,12 @@
 .menu {
     width: 400px;
-    height: 100%;
+    height: auto;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    flex-direction: column;
+    //flex-direction: column;
+    flex-wrap: wrap;
+    padding: 5px;
 
     > .groupWord {
         font-size: 14px;
@@ -29,5 +31,9 @@
     > .groupDivider {
         width: calc(100% - 20px);
         margin: 5px 10px;
+    }
+
+    >.menuButton {
+        margin: 5px;
     }
 }

@@ -1,0 +1,41 @@
+.codeRunner {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    flex-direction: column;
+
+    > .select {
+        width: 150px;
+        margin: 0 5px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 2;
+    }
+
+    > .output {
+        width: 100%;
+        //height: 100%;
+        z-index: 1;
+        padding: 5px;
+        border-top: 1px solid #d3d3d3;
+    }
+}
+
+.xterm-screen {
+    height: 295px !important;
+    width: 100% !important;
+
+    > canvas {
+        width: 100% !important;
+        height: 295px !important;
+    }
+
+    > .xterm-helpers {
+        width: 100%;
+    }
+}

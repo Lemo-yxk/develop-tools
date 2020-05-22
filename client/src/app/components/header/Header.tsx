@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import {Face} from "@material-ui/icons";
-import {Chip, Paper} from "@material-ui/core";
+import {Paper} from "@material-ui/core";
 import './header.scss'
 
 export default class Header extends Component {

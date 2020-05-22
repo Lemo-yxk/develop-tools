@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import './colorPicker.scss'
 import WebSocket from "../../../ws/WebSocket";
-import {Button, TextField} from "@material-ui/core";
+import {Button, Paper, TextField} from "@material-ui/core";
 import DevelopmentList from "../development/List";
 import Event from "../../../event/Event";
 import Axios from "axios";
@@ -22,37 +22,59 @@ export default class ColorPicker extends Component {
 
     state = {
         isStart: false,
-        color: "",
+        color: "#ffffff",
         selectedColor: "",
         history: [] as string[],
         image: ""
+    }
+
+
+    convert(color: string) {
+        if (color.length < 7) return [255, 255, 255]
+        return [
+            parseInt(`0x${color.slice(1, 3)}`),
+            parseInt(`0x${color.slice(3, 5)}`),
+            parseInt(`0x${color.slice(5, 7)}`)
+        ]
+    }
+
+    toRGB(colorArray: number[]) {
+        return `rgb(${colorArray.join(",")})`
+    }
+
+    toRGBa(colorArray: number[], transparent: number) {
+        return `rgb(${colorArray.concat(transparent).join(",")})`
     }
 
     render() {
         return (
             <div className={"colorPicker"}>
 
-                <div className={"colorContent"}>
+                <div className={"colorContent"} style={{
+                    backgroundColor: this.toRGBa(this.convert(this.state.color), 0.3),
+                    transition: `background-color 1s`
+                }}>
 
                     <div className={"colorShow"}>
-                        <div className={"showImage"}>
+                        <Paper className={"showImage"}>
                             <div className={"image"} style={{backgroundImage: `url(${this.state.image})`}}/>
                             <div className={"pointer"}/>
-                        </div>
-                        <div className={"showColor"} style={{backgroundColor: this.state.color}}/>
+                        </Paper>
+                        <Paper className={"showColor"} style={{backgroundColor: this.state.color}}/>
                     </div>
 
-                    <TextField
-                        id="standard-basic"
-                        onChange={() => {
-                        }}
-                        placeholder={"control to picker"}
-                        value={this.state.selectedColor}
-                        className={"colorWord"}
-                    />
+                    <div className={"colorWord"}>
+                        <TextField
+                            id="standard-basic"
+                            onChange={() => {
+                            }}
+                            placeholder={"control to picker"}
+                            value={this.state.selectedColor}
+                        />
+                    </div>
 
                     <div className={"history"}>
-                        {this.state.history.map(e => <div key={Math.random()} onClick={() => this.setState({selectedColor: e})} style={{backgroundColor: e}}/>)}
+                        {this.state.history.map(e => <Paper key={Math.random()} onClick={() => this.setState({selectedColor: e})} style={{backgroundColor: e}}/>)}
                     </div>
 
                     <div className={"buttonBox"}>
@@ -107,7 +129,7 @@ export default class ColorPicker extends Component {
             this.setState({isStart: true})
             Axios.get("/colorPicker/colorPicker/startHook").then()
         } else {
-            this.setState({isStart: false})
+            this.setState({isStart: false, color: '#ffffff'})
             Axios.get("/colorPicker/colorPicker/stopHook").then()
         }
 

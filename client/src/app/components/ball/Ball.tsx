@@ -4,12 +4,9 @@ import {Add} from "@material-ui/icons";
 import {Fab} from "@material-ui/core";
 import Draggable, {DraggableData, DraggableEvent} from "react-draggable";
 import Event from "../../event/Event";
+import Resize from "../../event/Resize";
 
 export default class Ball extends Component {
-
-    maxHeight = window.innerHeight - 40
-
-    maxWidth = window.innerWidth - 40
 
     handleStart = (e: any, data: any) => {
 
@@ -29,8 +26,8 @@ export default class Ball extends Component {
     rollBack = (x: number, y: number) => {
         let targetX = 0
         let targetY = 0
-        if (x >= this.maxWidth / 2) targetX = this.maxWidth
-        if (y >= this.maxHeight / 2) targetY = this.maxHeight
+        if (x >= this.state.maxWidth / 2) targetX = this.state.maxWidth
+        if (y >= this.state.maxHeight / 2) targetY = this.state.maxHeight
 
         let needMoveX = Math.abs(x - targetX)
         let needMoveY = Math.abs(y - targetY)
@@ -64,14 +61,46 @@ export default class Ball extends Component {
         requestAnimationFrame(fn)
     }
 
+    resetBall() {
+
+        // left top
+        if (this.state.x === 0 && this.state.y === 0) {
+            this.setState({x: 0, y: 0})
+        }
+        // left bottom
+        if (this.state.x === 0 && this.state.y !== 0) {
+            this.setState({x: 0, y: this.state.maxHeight})
+        }
+        // right top
+        if (this.state.x !== 0 && this.state.y === 0) {
+            this.setState({x: this.state.maxWidth, y: 0})
+        }
+        // right bottom
+        if (this.state.x !== 0 && this.state.y !== 0) {
+            this.setState({x: this.state.maxWidth, y: this.state.maxHeight})
+        }
+    }
+
     onClick = () => {
         console.log("hello click")
         Event.emit("openMenu")
     }
 
     state = {
-        x: this.maxWidth,
-        y: this.maxHeight
+        x: window.innerWidth - 40,
+        y: window.innerHeight - 40,
+        maxHeight: window.innerHeight - 40,
+        maxWidth: window.innerWidth - 40
+    }
+
+    componentDidMount() {
+        Resize.listen("Ball", () => {
+            this.setState({maxHeight: window.innerHeight - 40, maxWidth: window.innerWidth - 40}, () => this.resetBall())
+        })
+    }
+
+    componentWillUnmount() {
+        Resize.remove("Ball")
     }
 
 
@@ -81,8 +110,8 @@ export default class Ball extends Component {
                 onStart={this.handleStart}
                 onStop={this.handleStop}
                 onDrag={this.handleDrag}
-                bounds={{top: 0, left: 0, right: this.maxWidth, bottom: this.maxHeight}}
-                defaultPosition={{x: this.maxWidth, y: this.maxHeight}}
+                bounds={{top: 0, left: 0, right: this.state.maxWidth, bottom: this.state.maxHeight}}
+                defaultPosition={{x: this.state.maxWidth, y: this.state.maxHeight}}
                 position={{x: this.state.x, y: this.state.y}}
             >
                 <Fab style={{position: 'absolute', zIndex: 9999}} size="small" color="secondary" aria-label="add">

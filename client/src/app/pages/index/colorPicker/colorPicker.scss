@@ -6,6 +6,7 @@
     width: 100%;
     height: 100%;
 
+
     > .colorContent {
         display: flex;
         justify-content: space-around;
@@ -54,10 +55,13 @@
         }
 
         > .colorWord {
-            width: 100%;
-
+            width: 50%;
+            div {
+                width: 100%;
+            }
             input {
                 text-align: center;
+                width: 100%;
             }
         }
 
@@ -70,7 +74,7 @@
 
         > .history {
             width: 100%;
-            height: 10px;
+            height: 15px;
             display: flex;
             justify-content: flex-start;
             align-content: center;

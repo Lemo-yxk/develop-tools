@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="26cd0896-70e5-40e6-8d98-e8faedfd7c70" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../client/.babelrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/src/app/event/Resize.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/src/app/pages/index/codeRunner/CodeRunner.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/src/app/pages/index/codeRunner/codeRunner.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/src/app/pages/index/httpClient/HttpClient.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/src/app/pages/index/httpClient/httpClient.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/electron.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/app/runner.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/server/http/controller/codeRunner/codeRunner.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/server/http/router/code.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/config-overrides.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/config-overrides.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/components/ball/Ball.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/components/ball/Ball.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/components/header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/components/menu/Menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/components/menu/Menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/interface/modal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/interface/modal.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/pages/index/Index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pages/index/Index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/pages/index/development/List.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pages/index/development/List.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/pages/index/jsonToStruct/JsonToStruct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pages/index/jsonToStruct/JsonToStruct.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/tools/Tools.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/tools/Tools.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../client/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/colorPicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/colorPicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../server/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/app/app.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/app/app.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/app/electron.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/app/electron.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/app/react.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/app/react.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../server/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/../server/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/server/http/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/server/http/router.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" path="/usr/local/Cellar/go/1.14.3/libexec" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1cDSJwmsbchnhMYPdL0o0ErtI8W" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+</project>

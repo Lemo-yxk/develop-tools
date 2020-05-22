@@ -5,7 +5,7 @@ import Modal from "../../components/modal/Modal";
 import Message from "../../components/message/Message";
 import {SnackbarProvider} from "notistack";
 import Loading from "../../components/loading/Loading";
-import {HashRouter, Redirect, Route, Switch} from "react-router-dom";
+import {HashRouter, Route, Switch} from "react-router-dom";
 import Header from "../../components/header/Header";
 import {Paper} from "@material-ui/core";
 import DevelopmentList from "./development/List";

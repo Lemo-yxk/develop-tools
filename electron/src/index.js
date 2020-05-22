@@ -1,9 +1,19 @@
 const { app, BrowserWindow, screen, Menu, globalShortcut, nativeImage } = require("electron");
 const path = require("path");
 const child = require("child_process");
-// const ioHook = require("iohook");
+const manager = require("./manager");
+const fs = require("fs");
 
-// ioHook.start();
+const fixPath = require("fix-path");
+
+fixPath();
+
+var log = console.log;
+
+console.log = (...args) => {
+	fs.writeFileSync(path.join(__dirname, "./run.log"), JSON.stringify(args) + "\n", { flag: "a+" });
+	log(...args);
+};
 
 const gotTheLock = app.requestSingleInstanceLock();
 if (!gotTheLock) {
@@ -23,8 +33,6 @@ let quiting = false;
 function quit() {
 	if (quiting) return;
 	quiting = true;
-	// ioHook.unload();
-	// ioHook.stop();
 	if (!server) return app.quit();
 	if (process.platform === "win32") {
 		child.exec(`taskkill /T /F /PID ${server.pid}`, () => app.quit());
@@ -44,10 +52,14 @@ function startServer() {
 	if (process.platform === "win32") {
 		server = child.spawn(path.join(__dirname, "/windows-server/server.exe"), {
 			stdio: "pipe",
+			env: process.env,
+			cwd: path.join(__dirname, "/windows-server"),
 		});
 	} else {
-		server = child.exec(path.join(__dirname, "/mac-server/server"), {
+		server = child.spawn(path.join(__dirname, "/mac-server/server"), {
 			stdio: "pipe",
+			env: process.env,
+			cwd: path.join(__dirname, "/mac-server"),
 		});
 	}
 	server.stdout.on("data", (data) => {
@@ -82,7 +94,7 @@ function createWindow() {
 			nodeIntegration: true,
 		},
 	});
-	console.log(path.join(__dirname, "/app.asar/index.html"));
+
 	// and load the index.html of the app.
 	if (dev) {
 		mainWindow.loadURL("http://127.0.0.1:3000");
@@ -92,6 +104,13 @@ function createWindow() {
 
 	// Open the DevTools.
 	if (dev) mainWindow.webContents.openDevTools();
+
+	mainWindow.on("close", () => {
+		console.log("main close");
+		manager.delete("main");
+	});
+
+	manager.set("main", mainWindow);
 }
 
 if (process.platform === "darwin") {
@@ -117,6 +136,8 @@ if (process.platform === "darwin") {
 				{ label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
 				{ label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
 				{ label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+				{ label: "Copy", accelerator: "CmdOrCtrl+Home", selector: "copy:" },
+				{ label: "Paste", accelerator: "CmdOrCtrl+End", selector: "paste:" },
 				{ label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" },
 			],
 		},

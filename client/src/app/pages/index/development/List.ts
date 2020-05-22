@@ -3,6 +3,8 @@ import Encrypt from "../encrypt/Encrypt";
 import {Group} from "../../../interface/modal";
 import ColorPicker from "../colorPicker/ColorPicker";
 import JsonToStruct from "../jsonToStruct/JsonToStruct";
+import CodeRunner from "../codeRunner/CodeRunner";
+import HttpClient from "../httpClient/HttpClient";
 
 
 const DevelopmentList: Group[] = [
@@ -25,12 +27,22 @@ const DevelopmentList: Group[] = [
     },
     {
         Name: '颜色', Children: [
-            {Path: '/index/colorPicker', Name: '提取颜色', Component: ColorPicker},
+            {Path: '/index/colorPicker', Name: '提取颜色', Component: ColorPicker, DisableSelected: true},
         ]
     },
     {
         Name: 'JSON', Children: [
             {Path: '/index/jsonToStruct', Name: 'JSON转换', Component: JsonToStruct},
+        ]
+    },
+    {
+        Name: 'CodeRunner', Children: [
+            {Path: '/index/codeRunner', Name: 'CodeRunner', Component: CodeRunner},
+        ]
+    },
+    {
+        Name: 'HttpClient', Children: [
+            {Path: '/index/httpClient', Name: 'HttpClient', Component: HttpClient},
         ]
     }
 

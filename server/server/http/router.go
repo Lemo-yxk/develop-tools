@@ -20,4 +20,5 @@ func Router(server *lemo.HttpServerRouter) {
 	router.TimeRouter(server)
 	router.EncryptRouter(server)
 	router.ColorPickerRouter(server)
+	router.CodeRouter(server)
 }

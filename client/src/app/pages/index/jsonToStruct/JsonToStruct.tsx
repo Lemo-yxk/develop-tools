@@ -3,6 +3,7 @@ import './jsonToStruct.scss'
 import {InputData, jsonInputForTargetLanguage, quicktype} from 'quicktype-core'
 import MonacoEditor from 'react-monaco-editor';
 import {MenuItem, Paper, Select, TextField} from "@material-ui/core";
+import Resize from "../../../event/Resize";
 
 export default class JsonToStruct extends Component {
 
@@ -11,7 +12,10 @@ export default class JsonToStruct extends Component {
         jsonString: "",
         language: "go",
         jsonName: "Empty",
+        width: 0,
+        height: 0
     }
+    private jsonToStruct = React.createRef<HTMLDivElement>();
 
     editorDidMount(editor: any, monaco: any) {
         editor.focus();
@@ -26,18 +30,30 @@ export default class JsonToStruct extends Component {
     }
 
     componentDidMount() {
+        this.setState({width: this.jsonToStruct.current!.offsetWidth, height: this.jsonToStruct.current!.offsetHeight})
+        Resize.listen("JsonToStruct", () => {
+            this.jsonToStruct.current && this.onWindowResize()
+        })
+    }
 
+
+    onWindowResize() {
+        this.setState({width: this.jsonToStruct.current!.offsetWidth, height: this.jsonToStruct.current!.offsetHeight})
+    }
+
+    componentWillUnmount() {
+        Resize.remove("JsonToStruct")
     }
 
     render() {
 
         return (
-            <div className={"jsonToStruct"}>
+            <div className={"jsonToStruct"} ref={this.jsonToStruct}>
 
                 <Paper className={"left"}>
                     <MonacoEditor
-                        width="100%"
-                        height="100%"
+                        width={this.state.width * 0.4}
+                        height={this.state.height}
                         language="json"
                         theme="vs-light"
                         // value={this.state.code}
@@ -75,8 +91,8 @@ export default class JsonToStruct extends Component {
                 <Paper className={"right"}>
                     <div className={"monacoEditor"}>
                         <MonacoEditor
-                            width="100%"
-                            height="100%"
+                            width={this.state.width * 0.595}
+                            height={this.state.height}
                             language={this.state.language}
                             theme="vs-light"
                             value={this.state.code}

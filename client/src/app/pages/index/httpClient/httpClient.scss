@@ -1,0 +1,32 @@
+.httpClient {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    >.contentMenu {
+
+    }
+
+    > .treeView {
+        border-right: 1px solid #cccccc;
+        position: relative !important;
+        transform: unset !important;
+        padding-left: 5px;
+    }
+
+    > .showRequest {
+        height: 100%;
+        min-width: 10px;
+        flex-grow: 1;
+        overflow: hidden;
+    }
+
+    > .showResponse {
+        border-left: 1px solid #cccccc;
+        position: relative !important;
+        transform: unset !important;
+    }
+}

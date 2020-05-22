@@ -18,12 +18,14 @@ var App struct {
 	socket   *lemo.WebSocketServer
 	electron *electron
 	react    *react
+	runner   *runner
 }
 
 func Init() {
 	App.socket = newSocket()
 	App.electron = newElectron()
 	App.react = newReact()
+	App.runner = newRunner()
 }
 
 func Socket() *lemo.WebSocketServer {
@@ -36,4 +38,8 @@ func React() *react {
 
 func Electron() *electron {
 	return App.electron
+}
+
+func Runner() *runner {
+	return App.runner
 }

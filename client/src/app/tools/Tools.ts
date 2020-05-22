@@ -47,6 +47,34 @@ class Tools {
         return false;
     }
 
+
+    Clipboard = {
+        async Copy(data: string) {
+            return await navigator.clipboard.writeText(data)
+        },
+        async Parse() {
+            return await navigator.clipboard.readText()
+        }
+    }
+
+    Base64 = {
+        encode(str: any) {
+            // first we use encodeURIComponent to get percent-encoded UTF-8,
+            // then we convert the percent encodings into raw bytes which
+            // can be fed into btoa.
+            return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+                function toSolidBytes(match, p1: any) {
+                    return String.fromCharCode('0x' as any + p1);
+                }));
+        },
+        decode(str: any) {
+            // Going backwards: from bytestream, to percent-encoding, to original string.
+            return decodeURIComponent(atob(str).split('').map(function (c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+        }
+    };
+
     Modal = {
         Show(config: ModalConfig) {
             Event.emit("openModal", config)
