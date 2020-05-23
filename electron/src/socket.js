@@ -1,9 +1,6 @@
 const socket = require("lows");
 
 class Socket {
-	ws = null;
-	callback = null;
-
 	constructor() {
 		this.ws = new socket({
 			host: "http://127.0.0.1",

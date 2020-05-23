@@ -75,7 +75,7 @@ func (c *runner) Run(language string, codeString string) {
 	}
 
 	c.cmd.Stderr = c.write
-	c.cmd.Stdin = c.read
+	// c.cmd.Stdin = c.read
 	c.cmd.Stdout = c.write
 
 	_ = c.cmd.Start()

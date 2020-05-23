@@ -1,92 +1,90 @@
 .colorPicker {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+	> .colorContent {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		flex-direction: column;
+		padding: 5px;
 
+		> .colorShow {
+			width: 100%;
 
-    > .colorContent {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        flex-direction: column;
-        padding: 5px;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
 
-        > .colorShow {
-            width: 100%;
+			> .showImage {
+				width: 80px;
+				height: 80px;
+				position: relative;
 
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
+				> #canvas {
+					width: 80px;
+					height: 80px;
+				}
 
+				> .image {
+					width: 80px;
+					height: 80px;
+					background-repeat: no-repeat;
+					background-size: 100%;
+				}
 
+				> .pointer {
+					width: 8px;
+					height: 8px;
+					background-color: red;
+					position: absolute;
+					left: 36px;
+					top: 36px;
+				}
+			}
 
-            > .showImage {
-                width: 80px;
-                height: 80px;
-                position: relative;
+			> .showColor {
+				width: 80px;
+				height: 80px;
+			}
+		}
 
-                > .image {
-                    width: 80px;
-                    height: 80px;
-                    background-repeat: no-repeat;
-                    background-size: 100%;
-                }
+		> .colorWord {
+			width: 50%;
+			div {
+				width: 100%;
+			}
+			input {
+				text-align: center;
+				width: 100%;
+			}
+		}
 
-                >.pointer {
-                    width: 6px;
-                    height: 6px;
-                    background-color: red;
-                    position: absolute;
-                    left: 37px;
-                    top: 37px;
-                }
-            }
+		> .buttonBox {
+			width: 100%;
+			display: flex;
+			justify-content: space-around;
+			align-content: center;
+		}
 
+		> .history {
+			width: 100%;
+			height: 15px;
+			display: flex;
+			justify-content: flex-start;
+			align-content: center;
 
-            >.showColor {
-                width: 80px;
-                height: 80px;
-            }
-        }
-
-        > .colorWord {
-            width: 50%;
-            div {
-                width: 100%;
-            }
-            input {
-                text-align: center;
-                width: 100%;
-            }
-        }
-
-        > .buttonBox {
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            align-content: center;
-        }
-
-        > .history {
-            width: 100%;
-            height: 15px;
-            display: flex;
-            justify-content: flex-start;
-            align-content: center;
-
-            > div {
-                height: 15px;
-                width: 15px;
-                cursor: pointer;
-                margin: 0 calc((100% - 90px)/12);
-            }
-        }
-    }
-
-
+			> div {
+				height: 15px;
+				width: 15px;
+				cursor: pointer;
+				margin: 0 calc((100% - 90px) / 12);
+			}
+		}
+	}
 }

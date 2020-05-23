@@ -1,10 +1,12 @@
+// if (module.hot) module.hot.accept();
+
 const { app, BrowserWindow, screen, Menu, globalShortcut, nativeImage } = require("electron");
 const path = require("path");
 const child = require("child_process");
 const manager = require("./manager");
 const fs = require("fs");
-
 const fixPath = require("fix-path");
+// const hook = require("./hook");
 
 fixPath();
 
@@ -22,7 +24,7 @@ if (!gotTheLock) {
 
 if (require("electron-squirrel-startup")) {
 	console.log("electron-squirrel-startup");
-	return quit();
+	app.quit();
 }
 
 let server = null;
@@ -33,6 +35,10 @@ let quiting = false;
 function quit() {
 	if (quiting) return;
 	quiting = true;
+	// hook.stopKeyUp();
+	// hook.stopMouseMove();
+	// hook.stopHook();
+	// hook.unload();
 	if (!server) return app.quit();
 	if (process.platform === "win32") {
 		child.exec(`taskkill /T /F /PID ${server.pid}`, () => app.quit());
@@ -201,11 +207,15 @@ app.on("quit", () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 
+// var renderer = require("../renderer/renderer");
+
 var Socket = require("./socket");
 var Command = require("./command");
 
 app.socket = new Socket();
 
 var command = new Command();
+
+require("./renderer/renderer");
 
 app.socket.start(() => {});

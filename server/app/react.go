@@ -18,6 +18,7 @@ import (
 	"github.com/Lemo-yxk/lemo/exception"
 	"github.com/Lemo-yxk/lemo/utils"
 	"github.com/go-vgo/robotgo"
+	hook "github.com/robotn/gohook"
 )
 
 func newReact() *react {
@@ -65,29 +66,14 @@ func (r *react) StartHook() {
 
 			r.robotStart = true
 
-			var react = r.GetConnection()
-			if react == nil {
+			if e.Kind == 5 {
+				r.mouseMove(e)
+				continue
+			} else {
+				r.keyUp(e)
 				continue
 			}
 
-			var bit = robotgo.CaptureScreen(int(e.X)-8, int(e.Y)-8, 16, 16)
-
-			var bitBytes = robotgo.ToBitmapBytes(bit)
-			robotgo.FreeBitmap(bit)
-
-			var base64 = utils.Crypto.Base64Encode(bitBytes)
-
-			console.Assert(react.JsonFormat(lemo.JsonPackage{
-				Event: "/Server/System/hook",
-				Message: lemo.M{
-					"id":      e.Kind,
-					"x":       e.X,
-					"y":       e.Y,
-					"keyCode": e.Keycode,
-					"color":   robotgo.GetPixelColor(int(e.X), int(e.Y)),
-					"image":   base64,
-				},
-			}))
 		}
 
 		r.robotStart = false
@@ -109,4 +95,69 @@ func (r *react) StopHook() {
 	}).Catch(func(e exception.Error) {
 		console.Error(e)
 	})
+}
+
+func (r *react) mouseMove(e hook.Event) {
+	var react = r.GetConnection()
+	if react == nil {
+		return
+	}
+	console.Assert(react.JsonFormat(lemo.JsonPackage{
+		Event: "/Server/System/hook",
+		Message: lemo.M{
+			"id":      e.Kind,
+			"x":       e.X,
+			"y":       e.Y,
+			"keycode": e.Keycode,
+		},
+	}))
+}
+func (r *react) keyUp(e hook.Event) {
+	var react = r.GetConnection()
+	if react == nil {
+		return
+	}
+	var hx, hy = robotgo.GetScreenSize()
+
+	var x = int(e.X)
+	var y = int(e.Y)
+	var ex = x - 4
+	var ey = y - 4
+	var width = 8
+	var height = 8
+
+	if x < 4 {
+		return
+	}
+
+	if hx-x < 4 {
+		return
+	}
+
+	if y < 4 {
+		return
+	}
+
+	if hy-y < 4 {
+		return
+	}
+
+	var bit = robotgo.CaptureScreen(ex, ey, width, height)
+
+	var bitBytes = robotgo.ToBitmapBytes(bit)
+	robotgo.FreeBitmap(bit)
+
+	var base64 = utils.Crypto.Base64Encode(bitBytes)
+
+	console.Assert(react.JsonFormat(lemo.JsonPackage{
+		Event: "/Server/System/hook",
+		Message: lemo.M{
+			"id":      e.Kind,
+			"x":       e.X,
+			"y":       e.Y,
+			"keycode": e.Keycode,
+			"color":   robotgo.GetPixelColor(int(e.X), int(e.Y)),
+			"image":   base64,
+		},
+	}))
 }

@@ -34,5 +34,20 @@
 		"electron": "9.0.0",
 		"electron-builder": "^22.6.1",
 		"electron-rebuild": "^1.11.0"
+	},
+	"iohook": {
+		"targets": [
+			"node-79",
+			"electron-76"
+		],
+		"platforms": [
+			"win32",
+			"darwin",
+			"linux"
+		],
+		"arches": [
+			"x64",
+			"ia32"
+		]
 	}
 }
